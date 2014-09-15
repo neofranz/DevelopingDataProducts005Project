@@ -1,0 +1,16 @@
+{
+    "contents" : "# Code Developed by neofranz user, for the Coursera Developing Data Products Course, enrolled as jfrancisco.zr@gmail.com\nlibrary(shiny)\n# ui.R\n\nshinyUI(pageWithSidebar(\n  headerPanel(\"Demo of multiplication\"),\n  sidebarPanel(\n    sliderInput('mean1', 'Mean of Gaussian 1',value = -1, min = -10, max = 10, step = .01,),\n    sliderInput('sdev1', 'Variance of Gaussian 1', value = 1, min = .1, max = 5.0, step = 0.1,),\n    sliderInput('mean2', 'Mean of Gaussian 2',value = 1, min = -10, max = 10, step = .01,),\n    sliderInput('sdev2', 'Variance of Gaussian 2', value = 2, min = .1, max = 5.0, step = 0.1,),\n    h3(\"Multiplication checkbox\"),\n    checkboxInput(\"displayMultiplication\", label = \"Display multiplication\", value = TRUE),\n    helpText(\"Note: select the mean and variance of each of the Gaussian distributions.\",\n               \"Use the sliders to change the respective values. Use the button to hide or display\",\n                \"the multiplication of these distributions.\")\n  ),\n  mainPanel(\n    img(src=\"gaussianCvs.jpg\", height=150, width= 300),\n    plotOutput('gaussianPlots')\n    \n  )\n))\n\n\n",
+    "created" : 1410592965610.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1448106455",
+    "id" : "B6B4D000",
+    "lastKnownWriteTime" : 1410752256,
+    "path" : "/media/zubizarreta/DATA/P1/Dropbox/Prgmng/RTemp/Shiny/Project/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

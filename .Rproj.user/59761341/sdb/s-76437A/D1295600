@@ -1,0 +1,16 @@
+{
+    "contents" : "# Code Developed by neofranz user, for the Coursera Developing Data Products Course, enrolled as jfrancisco.zr@gmail.com\nlibrary(\"shiny\")\n\n\nshinyServer(\n  \n  function(input, output) {\n    x   <- seq(-10,10,length=1001)\n    col1 = 'black' # color for Gaussian1\n    col2 = 'blue' # color for Gaussian2\n    col3 = 'red' # color for Multiplication of Gaussian1 and Gaussian2\n   \n    output$gaussianPlots <- renderPlot({\n \n      df1 <- dnorm(x, mean = input$mean1, sd = input$sdev1, log = FALSE)\n      df2 <- dnorm(x, mean = input$mean2, sd = input$sdev2, log = FALSE)\n      df3 <- df1 * df2\n      minY = min(df1, df2)\n      maxY = max(df1, df2)\n      plot(x,y=df1,  type=\"l\", col = col1 ,ylim=c(minY, maxY), xlim=c(-10,15), \n           main='Gaussian distributions modelling', ylab='probability')\n      legend(x=9.5, y=maxY*0.8, legend='Gaussian 1', fill=NULL, col= col1, border=col1)\n      lines(x,y=df2, col= col2)\n      legend(x=9.5, y=maxY*0.6, legend='Gaussian 2', fill=NULL, col= col2, border=col2)\n      if(input$displayMultiplication){\n        lines(x,y=df3, col= col3)\n        legend(x=9.5, y=maxY*0.4, legend='G1 x G2', fill=NULL, col= col3, border=col3)\n      }  \n  })\n})\n",
+    "created" : 1410592963908.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1050961392",
+    "id" : "D1295600",
+    "lastKnownWriteTime" : 1410752252,
+    "path" : "/media/zubizarreta/DATA/P1/Dropbox/Prgmng/RTemp/Shiny/Project/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

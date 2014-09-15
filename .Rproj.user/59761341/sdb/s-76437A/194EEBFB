@@ -1,0 +1,16 @@
+{
+    "contents" : "// Put code in an Immediately Invoked Function Expression (IIFE).\n// This isn't strictly necessary, but it's good JavaScript hygiene.\n(function() {\n// See http://rstudio.github.io/shiny/tutorial/#building-outputs for\n// more information on creating output bindings.\n// First create a generic output binding instance, then overwrite\n// specific methods whose behavior we want to change.\nvar binding = new Shiny.OutputBinding();\nbinding.find = function(scope) {\n// For the given scope, return the set of elements that belong to\n// this binding.\nreturn $(scope).find(\".nvd3-linechart\");\n};\nbinding.renderValue = function(el, data) {\n// This function will be called every time we receive new output\n// values for a line chart from Shiny. The \"el\" argument is the\n// div for this particular chart.\nvar $el = $(el);\n// The first time we render a value for a particular element, we\n// need to initialize the nvd3 line chart and d3 selection. We'll\n// store these on $el as a data value called \"state\".\nif (!$el.data(\"state\")) {\nvar chart = nv.models.lineChart()\n.margin({left: 100})\n.useInteractiveGuideline(true)\n.transitionDuration(350)\n.showLegend(true)\n.showYAxis(true)\n.showXAxis(true);\nchart.xAxis //Chart x-axis settings\n.axisLabel('Time (ms)')\n.tickFormat(d3.format(',r'));\nchart.yAxis //Chart y-axis settings\n.axisLabel('Voltage (v)')\n.tickFormat(d3.format('.02f'));\nnv.utils.windowResize(chart.update);\nvar selection = d3.select(el).select(\"svg\");\n// Store the chart object on el so we can get it next time\n$el.data(\"state\", {\nchart: chart,\nselection: selection\n});\n}\n// Now, the code that'll run every time a value is rendered...\n// Retrieve the chart and selection we created earlier\nvar state = $el.data(\"state\");\n// Schedule some work with nvd3\nnv.addGraph(function() {\n// Update the chart\nstate.selection\n.datum(data)\n.transition(500)\n.call(state.chart);\nreturn state.chart;\n});\n};\n// Tell Shiny about our new output binding\nShiny.outputBindings.register(binding, \"shinyjsexamples.nvd3-linechart\");\n})();\n",
+    "created" : 1410654269059.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1623852972",
+    "id" : "194EEBFB",
+    "lastKnownWriteTime" : 1410654306,
+    "path" : "/media/zubizarreta/DATA/P1/Dropbox/Prgmng/RTemp/Shiny/SevCurves/www/linechart-binding.js",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "js"
+}

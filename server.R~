@@ -1,0 +1,13 @@
+
+library("shiny")
+#'data(galton)
+
+shinyServer(
+  function(input, output) {
+    output$gaussianPlots <- renderPlot({
+ 
+    # generate an rnorm distribution and plot it
+    dist <- rnorm(input$mean1)
+    hist(dist)
+  })
+})

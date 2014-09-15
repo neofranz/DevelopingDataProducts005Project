@@ -1,0 +1,23 @@
+library(shiny)
+# ui.R
+
+shinyUI(pageWithSidebar(
+  headerPanel("Gaussian multiplication"),
+  sidebarPanel(
+    sliderInput('mean1', 'Mean of Gaussian 1',value = 70, min = -0, max = 100, step = 0.05,),
+    sliderInput('stdev1', 'Standard Deviation of Gaussian 1',value = 1, min = 0, max = 10, step = 0.01,),
+    sliderInput('mean2', 'Mean of Gaussian 2',value = 7, min = -0, max = 100, step = 0.05,),
+    sliderInput('stdev2', 'Standard Deviation of Gaussian 2',value = 1, min = 0, max = 10, step = 0.01,),
+    h3("Multiplication checkbox"),
+      checkboxInput("checkbox", label = "Display multiplication", value = TRUE)),
+     helpText("Note: select the mean and variance of each of the gaussian distributions.",
+               "Use the sliders to change the respective values. Use the button to hide or display",
+                "the multiplication of these distributions.")
+  ),
+  mainPanel(
+    plotOutput('gaussianPlots'),
+    img(src="gaussianCvs.jpg", height=150, width= 300)
+  )
+))
+
+
