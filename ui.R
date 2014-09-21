@@ -22,6 +22,7 @@ shinyUI(pageWithSidebar(
   mainPanel(
     # Area to render the plots
     h4("Dynamic plot of Gaussian distributions:"),
+    p(em("Documentation:",a("Gaussian distributions dynamic plotting and multiplication",href="index.html"))),
     helpText("A Gaussian or normal distribution is one of the most important concepts in statistics.",
              "The mean or expectation of the distribution it is also its median and mode.", 
              "The variance  measures how far a set of numbers is spread out with respect to the mean.",
@@ -31,4 +32,5 @@ shinyUI(pageWithSidebar(
     
   )
 ))
+
 
