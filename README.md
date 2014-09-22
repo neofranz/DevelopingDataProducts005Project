@@ -13,6 +13,9 @@ The files of this project are:
 
 This application is accesible in: http://neofranz.shinyapps.io/Project/
 
+NOTE: RSTUDIO PRESENTATION CODE available in: http://github.com/neofranz/neofranz.github.io
+
+
 A presentation providing more details about this project is accessible via:
 
 http://rpubs.com/neofranz/28533
